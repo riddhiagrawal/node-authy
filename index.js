@@ -80,13 +80,13 @@ Authy.prototype.verify = function (id, token, force, callback) {
     this._request("get", "/protected/json/verify/" + querystring.escape(cleanToken) + "/" + querystring.escape(id), {}, check_body_callback, qs);
 };
 
-Authy.prototype.request_sms = function (id, force, callback) {
+Authy.prototype.request_sms = function (id, params, callback) {
     var qs = {};
 
     if (arguments.length > 2) {
-        qs.force = force;
+        qs = params;
     } else {
-        callback = force;
+        callback = params;
     }
 
     this._request("get", "/protected/json/sms/" + querystring.escape(id), {}, callback, qs);

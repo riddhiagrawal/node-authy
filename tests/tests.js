@@ -151,7 +151,14 @@ exports['Request SMS'] = function (test) {
 
 
 exports['Request SMS - Force'] = function (test) {
-    authy.request_sms(test_user.id, true, function (err, res) {
+    authy.request_sms(test_user.id, {force:true}, function (err, res) {
+        test.ok(res);
+        test.done();
+    });
+};
+
+exports['Request SMS - Force - Locale'] = function (test) {
+    authy.request_sms(test_user.id, {force:true, locale: 'en'}, function (err, res) {
         test.ok(res);
         test.done();
     });
