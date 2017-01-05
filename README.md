@@ -49,10 +49,25 @@ authy.verify('1337', '0000000', function (err, res) {
 
 #### Request SMS
 
-request_sms(id, [force], callback);
+request_sms(id, [params], callback);
 
 ```javascript
 authy.request_sms('1337', function (err, res) {
+
+});
+```
+
+The params argument is optional, following are the two properties you can set:
+
+`force`: default=`false`. When set to `true`, it sends the message even if the user is using the mobile app. You can configure the default behaviour using your Authy Dashboard account.
+
+`locale`: sets the language of SMS. Example: `en`, `pl`, `es`, `hi`
+
+Example:
+
+```javascript
+// Force sending the SMS, the language of SMS is Spanish
+authy.request_sms('1337',{ force:true, locale: 'es'}, function (err, res) {
 
 });
 ```
